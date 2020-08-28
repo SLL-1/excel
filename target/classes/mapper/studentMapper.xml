@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.studentMapper">
+  <resultMap id="BaseResultMap" type="com.example.entity.student">
+    <id column="stunum" jdbcType="INTEGER" property="stunum" />
+    <result column="stuname" jdbcType="VARCHAR" property="stuname" />
+    <result column="stuage" jdbcType="INTEGER" property="stuage" />
+    <result column="stusex" jdbcType="VARCHAR" property="stusex" />
+    <result column="stubirthday" jdbcType="DATE" property="stubirthday" />
+    <result column="stuhobby" jdbcType="VARCHAR" property="stuhobby" />
+  </resultMap>
+  <resultMap id="TotalBaseResultMap" type="com.example.entity.student">
+    <id column="stunum" jdbcType="INTEGER" property="stunum" />
+    <result column="stuname" jdbcType="VARCHAR" property="stuname" />
+    <result column="stuage" jdbcType="INTEGER" property="stuage" />
+    <result column="stusex" jdbcType="VARCHAR" property="stusex" />
+    <result column="stubirthday" jdbcType="DATE" property="stubirthday" />
+    <result column="stuhobby" jdbcType="VARCHAR" property="stuhobby" />
+    <result column="total" jdbcType="INTEGER" property="total" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    stunum, stuname, stuage, stusex, stubirthday, stuhobby
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from student
+    where stunum = #{stunum,jdbcType=INTEGER}
+  </select>
+  <select id="selectList" parameterType="com.example.entity.SelectTemplate"  resultMap="BaseResultMap">
+    select  <include refid="Base_Column_List" />
+    from  student
+    <if test="order !=null and sort !=null">
+    order by ${sort} ${order}
+    </if>
+    limit ${(page-1)*rows},${rows}
+  </select>
+  <select id="selectListTotal" parameterType="com.example.entity.SelectTemplate"  resultType="java.lang.Integer">
+    select  count(*)
+    from  student
+    <if test="order !=null and sort !=null">
+      order by ${sort} ${order}
+    </if>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from student
+    where stunum = #{stunum,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.entity.student">
+    insert into student (stunum, stuname, stuage, 
+      stusex, stubirthday, stuhobby
+      )
+    values (#{stunum,jdbcType=INTEGER}, #{stuname,jdbcType=VARCHAR}, #{stuage,jdbcType=INTEGER}, 
+      #{stusex,jdbcType=VARCHAR}, #{stubirthday,jdbcType=DATE}, #{stuhobby,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.entity.student">
+    insert into student
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="stunum != null">
+        stunum,
+      </if>
+      <if test="stuname != null">
+        stuname,
+      </if>
+      <if test="stuage != null">
+        stuage,
+      </if>
+      <if test="stusex != null">
+        stusex,
+      </if>
+      <if test="stubirthday != null">
+        stubirthday,
+      </if>
+      <if test="stuhobby != null">
+        stuhobby,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="stunum != null">
+        #{stunum,jdbcType=INTEGER},
+      </if>
+      <if test="stuname != null">
+        #{stuname,jdbcType=VARCHAR},
+      </if>
+      <if test="stuage != null">
+        #{stuage,jdbcType=INTEGER},
+      </if>
+      <if test="stusex != null">
+        #{stusex,jdbcType=VARCHAR},
+      </if>
+      <if test="stubirthday != null">
+        #{stubirthday,jdbcType=DATE},
+      </if>
+      <if test="stuhobby != null">
+        #{stuhobby,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.entity.student">
+    update student
+    <set>
+      <if test="stuname != null">
+        stuname = #{stuname,jdbcType=VARCHAR},
+      </if>
+      <if test="stuage != null">
+        stuage = #{stuage,jdbcType=INTEGER},
+      </if>
+      <if test="stusex != null">
+        stusex = #{stusex,jdbcType=VARCHAR},
+      </if>
+      <if test="stubirthday != null">
+        stubirthday = #{stubirthday,jdbcType=DATE},
+      </if>
+      <if test="stuhobby != null">
+        stuhobby = #{stuhobby,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where stunum = #{stunum,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.entity.student">
+    update student
+    set stuname = #{stuname,jdbcType=VARCHAR},
+      stuage = #{stuage,jdbcType=INTEGER},
+      stusex = #{stusex,jdbcType=VARCHAR},
+      stubirthday = #{stubirthday,jdbcType=DATE},
+      stuhobby = #{stuhobby,jdbcType=VARCHAR}
+    where stunum = #{stunum,jdbcType=INTEGER}
+  </update>
+</mapper>
