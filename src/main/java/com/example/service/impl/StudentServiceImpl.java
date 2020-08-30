@@ -14,15 +14,25 @@ public class StudentServiceImpl implements StudentService {
 
     @Autowired
    private  studentMapper studentMapper;
+
     @Override
     public List<student> getStudentList(SelectTemplate selectTemplate) {
-
+//        SelectTemplate selectTemplate1=new SelectTemplate();
+//        selectTemplate.setPage(1);
+//        selectTemplate.setRows(5);
+//        selectTemplate.setSort("stuname");
+//        selectTemplate.setOrder("desc");
             try{
-                return studentMapper.selectList(selectTemplate);
+                    return studentMapper.selectList(selectTemplate);
+
             }catch (Exception e){
                 throw new RuntimeException("获取信息失败"+e.getMessage());
+
             }
 
+    }
+    public List<student> getStudentList() {
+        return getStudentList(new SelectTemplate());
     }
 
     @Override

@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface StudentService {
     List<student> getStudentList(SelectTemplate selectTemplate);
+    List<student> getStudentList();
     int getStudentTotal (SelectTemplate selectTemplate);
 
 }

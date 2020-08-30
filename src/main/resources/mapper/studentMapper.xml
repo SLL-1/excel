@@ -30,10 +30,12 @@
   <select id="selectList" parameterType="com.example.entity.SelectTemplate"  resultMap="BaseResultMap">
     select  <include refid="Base_Column_List" />
     from  student
-    <if test="order !=null and sort !=null">
+    <if test="null != order and null != sort">
     order by ${sort} ${order}
     </if>
+    <if test="page>0 and rows>0">
     limit ${(page-1)*rows},${rows}
+    </if>
   </select>
   <select id="selectListTotal" parameterType="com.example.entity.SelectTemplate"  resultType="java.lang.Integer">
     select  count(*)

@@ -91,6 +91,63 @@
             pagination:true,//创建分页工具栏
             pageSize:10,
             pageList:[5,10,15,20,50],
+            toolbar:[{
+                text:'导出成excel',
+                // iconCls:'icon-save',
+                handler:function () {
+                    //获取后台传递的参数
+                    var className=$('#t-student').datagrid('getData').className;
+                    var methodName=$('#t-student').datagrid('getData').methodName;
+                    //获取表头信息
+                    var header =$('#t-student').datagrid('options').columns[0];
+                    var fields="";
+                    var titles="";
+                    for (var i=0;i<header.length;i++){
+                        var field=header[i].field;
+                        var title=header[i].title;
+                        var hiddenFlag=header[i].hidden;
+                        if(!hiddenFlag){
+                            var dh= i==(header.length-1)?"":",";
+                            fields=fields+field+dh;
+                            titles=titles+title+dh;
+                        }
+                    }
+                    //向后台发送请求，数据用form表单形式传输
+                    var form=$("<form>");
+                    form.attr('style','display:none');
+                    form.attr('target','');
+                    form.attr('method','post');
+                    form.attr('action','export');
+                    //添加input数据
+                    var input1=$("<input>");
+                    input1.attr('type','hidden');
+                    input1.attr('name','fields');
+                    input1.attr('value',fields);
+
+                    var input2=$("<input>");
+                    input2.attr('type','hidden');
+                    input2.attr('name','titles');
+                    input2.attr('value',titles);
+
+                    var input3=$("<input>");
+                    input3.attr('type','hidden');
+                    input3.attr('name','className');
+                    input3.attr('value',className);
+
+                    var input4=$("<input>");
+                    input4.attr('type','hidden');
+                    input4.attr('name','methodName');
+                    input4.attr('value',methodName);
+                    //将表单数据放入body中
+                    $('body').append(form);
+                    form.append(input1);
+                    form.append(input2);
+                    form.append(input3);
+                    form.append(input4);
+                    //提交表单
+                    form.submit();
+                }
+            }]
 
         });
     });
