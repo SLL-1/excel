@@ -147,7 +147,13 @@
                     //提交表单
                     form.submit();
                 }
-            }]
+            },
+                {
+                    text: '导入数据',
+                    handler:function () {
+                        $('#import_dialog').dialog('open');
+                    }
+                }]
 
         });
     });
@@ -159,6 +165,38 @@
     <div region="center">
         <table id="t-student"></table>
     </div>
+</div>
+
+<!-- 导入模板-->
+<div id="import_dialog" title="导入数据" aria-modal="true" draggable="false" class="easyui-dialog" closed="true" style="width: 350px;height: 220px;">
+    <form id="importForm" action="importExcel" method="post" enctype="multipart/form-data">
+        <table>
+            <tr>
+                <td>下载模板：</td>
+                <td>
+                    <a href="downloadTemplate?templateId=student">模板下载</a>
+                </td>
+            </tr>
+            <tr>
+                <td>上传数据：</td>
+                <td>
+                    <input id="file" name="file" type="file"/>
+                </td>
+            </tr>
+            <tr hidden="hidden">
+                <td>表格类型id</td>
+                <td>
+                    <input id="templateId" name="templateId" type="text" value="student"/>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                            <input type="submit" class="easyui-linkbutton" value="导入"></input>
+                </td>
+            </tr>
+        </table>
+
+    </form>
 
 </div>
 </body>

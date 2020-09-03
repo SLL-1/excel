@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.importdatadetailMapper">
+  <resultMap id="BaseResultMap" type="com.example.entity.importdatadetail">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="importid" jdbcType="INTEGER" property="importid" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="failcode" jdbcType="VARCHAR" property="failcode" />
+    <result column="msg" jdbcType="VARCHAR" property="msg" />
+    <result column="col0" jdbcType="VARCHAR" property="col0" />
+    <result column="col1" jdbcType="VARCHAR" property="col1" />
+    <result column="col2" jdbcType="VARCHAR" property="col2" />
+    <result column="col3" jdbcType="VARCHAR" property="col3" />
+    <result column="col4" jdbcType="VARCHAR" property="col4" />
+    <result column="col5" jdbcType="VARCHAR" property="col5" />
+    <result column="col6" jdbcType="VARCHAR" property="col6" />
+    <result column="col7" jdbcType="VARCHAR" property="col7" />
+    <result column="col8" jdbcType="VARCHAR" property="col8" />
+    <result column="col9" jdbcType="VARCHAR" property="col9" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, importid, status, failcode, msg, col0, col1, col2, col3, col4, col5, col6, col7, 
+    col8, col9
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from importdatadetail
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from importdatadetail
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.entity.importdatadetail">
+    insert into importdatadetail (id, importid, status,
+      failcode, msg, col0, 
+      col1, col2, col3, col4, 
+      col5, col6, col7, col8, 
+      col9)
+    values (#{id,jdbcType=INTEGER}, #{importid,jdbcType=INTEGER}, #{status,jdbcType=INTEGER},
+      #{failcode,jdbcType=VARCHAR}, #{msg,jdbcType=VARCHAR}, #{col0,jdbcType=VARCHAR}, 
+      #{col1,jdbcType=VARCHAR}, #{col2,jdbcType=VARCHAR}, #{col3,jdbcType=VARCHAR}, #{col4,jdbcType=VARCHAR}, 
+      #{col5,jdbcType=VARCHAR}, #{col6,jdbcType=VARCHAR}, #{col7,jdbcType=VARCHAR}, #{col8,jdbcType=VARCHAR}, 
+      #{col9,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.entity.importdatadetail" useGeneratedKeys="true" keyProperty="id">
+    insert into importdatadetail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="importid != null">
+        importid,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="failcode != null">
+        failcode,
+      </if>
+      <if test="msg != null">
+        msg,
+      </if>
+      <if test="col0 != null">
+        col0,
+      </if>
+      <if test="col1 != null">
+        col1,
+      </if>
+      <if test="col2 != null">
+        col2,
+      </if>
+      <if test="col3 != null">
+        col3,
+      </if>
+      <if test="col4 != null">
+        col4,
+      </if>
+      <if test="col5 != null">
+        col5,
+      </if>
+      <if test="col6 != null">
+        col6,
+      </if>
+      <if test="col7 != null">
+        col7,
+      </if>
+      <if test="col8 != null">
+        col8,
+      </if>
+      <if test="col9 != null">
+        col9,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="importid != null">
+        #{importid,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="failcode != null">
+        #{failcode,jdbcType=VARCHAR},
+      </if>
+      <if test="msg != null">
+        #{msg,jdbcType=VARCHAR},
+      </if>
+      <if test="col0 != null">
+        #{col0,jdbcType=VARCHAR},
+      </if>
+      <if test="col1 != null">
+        #{col1,jdbcType=VARCHAR},
+      </if>
+      <if test="col2 != null">
+        #{col2,jdbcType=VARCHAR},
+      </if>
+      <if test="col3 != null">
+        #{col3,jdbcType=VARCHAR},
+      </if>
+      <if test="col4 != null">
+        #{col4,jdbcType=VARCHAR},
+      </if>
+      <if test="col5 != null">
+        #{col5,jdbcType=VARCHAR},
+      </if>
+      <if test="col6 != null">
+        #{col6,jdbcType=VARCHAR},
+      </if>
+      <if test="col7 != null">
+        #{col7,jdbcType=VARCHAR},
+      </if>
+      <if test="col8 != null">
+        #{col8,jdbcType=VARCHAR},
+      </if>
+      <if test="col9 != null">
+        #{col9,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.entity.importdatadetail">
+    update importdatadetail
+    <set>
+      <if test="importid != null">
+        importid = #{importid,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="failcode != null">
+        failcode = #{failcode,jdbcType=VARCHAR},
+      </if>
+      <if test="msg != null">
+        msg = #{msg,jdbcType=VARCHAR},
+      </if>
+      <if test="col0 != null">
+        col0 = #{col0,jdbcType=VARCHAR},
+      </if>
+      <if test="col1 != null">
+        col1 = #{col1,jdbcType=VARCHAR},
+      </if>
+      <if test="col2 != null">
+        col2 = #{col2,jdbcType=VARCHAR},
+      </if>
+      <if test="col3 != null">
+        col3 = #{col3,jdbcType=VARCHAR},
+      </if>
+      <if test="col4 != null">
+        col4 = #{col4,jdbcType=VARCHAR},
+      </if>
+      <if test="col5 != null">
+        col5 = #{col5,jdbcType=VARCHAR},
+      </if>
+      <if test="col6 != null">
+        col6 = #{col6,jdbcType=VARCHAR},
+      </if>
+      <if test="col7 != null">
+        col7 = #{col7,jdbcType=VARCHAR},
+      </if>
+      <if test="col8 != null">
+        col8 = #{col8,jdbcType=VARCHAR},
+      </if>
+      <if test="col9 != null">
+        col9 = #{col9,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.entity.importdatadetail">
+    update importdatadetail
+    set importid = #{importid,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      failcode = #{failcode,jdbcType=VARCHAR},
+      msg = #{msg,jdbcType=VARCHAR},
+      col0 = #{col0,jdbcType=VARCHAR},
+      col1 = #{col1,jdbcType=VARCHAR},
+      col2 = #{col2,jdbcType=VARCHAR},
+      col3 = #{col3,jdbcType=VARCHAR},
+      col4 = #{col4,jdbcType=VARCHAR},
+      col5 = #{col5,jdbcType=VARCHAR},
+      col6 = #{col6,jdbcType=VARCHAR},
+      col7 = #{col7,jdbcType=VARCHAR},
+      col8 = #{col8,jdbcType=VARCHAR},
+      col9 = #{col9,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateStatusByImportId" parameterType="java.lang.Integer">
+    update importdatadetail
+    set
+      status = 1,
+      failcode = "success",
+      msg = "处理成功"
+    where importid = #{importid,jdbcType=INTEGER}
+  </update>
+</mapper>

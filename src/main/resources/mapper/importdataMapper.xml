@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.importdataMapper">
+  <resultMap id="BaseResultMap" type="com.example.entity.importdata">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="createdate" jdbcType="TIMESTAMP" property="createdate" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="handledate" jdbcType="TIMESTAMP" property="handledate" />
+    <result column="handlestatus" jdbcType="INTEGER" property="handlestatus" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, type, createdate, status, handledate, handlestatus
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from importdata
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from importdata
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.entity.importdata" useGeneratedKeys="true" keyProperty="id">
+    insert into importdata (type, createdate,
+      status
+      )
+    values (#{type,jdbcType=VARCHAR}, #{createdate,jdbcType=TIMESTAMP},
+      #{status,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.entity.importdata">
+    insert into importdata
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="createdate != null">
+        createdate,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="handledate != null">
+        handledate,
+      </if>
+      <if test="handlestatus != null">
+        handlestatus,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="handledate != null">
+        #{handledate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="handlestatus != null">
+        #{handlestatus,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.entity.importdata">
+    update importdata
+    <set>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        createdate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="handledate != null">
+        handledate = #{handledate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="handlestatus != null">
+        handlestatus = #{handlestatus,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.entity.importdata">
+    update importdata
+    set type = #{type,jdbcType=VARCHAR},
+      createdate = #{createdate,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      handledate = #{handledate,jdbcType=TIMESTAMP},
+      handlestatus = #{handlestatus,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <update id="updateHandleStatusByImportId" parameterType="com.example.entity.importdata">
+    update importdata
+    set
+      handledate = #{handledate,jdbcType=TIMESTAMP},
+      handlestatus = #{handlestatus,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--表格的样式-->
+<excel id="student" code="student" name="学生信息导入">
+    <!-- 设置列数 -->
+    <colgroup>
+        <col index="A" width="17em" ></col>
+        <col index="B" width="17em" ></col>
+        <col index="C" width="17em" ></col>
+        <col index="D" width="17em" ></col>
+        <col index="E" width="17em" ></col>
+        <col index="F" width="17em" ></col>
+    </colgroup>
+    <!--表格的标题，表格第一行的合并 -->
+    <title>
+        <tr height="16px">
+            <td rowspan="1" colspan="6" value="学生信息导入"/>
+        </tr>
+    </title>
+    <!--列名称-->
+    <thead>
+        <tr height="16px">
+            <th value="编号"/>
+            <th value="姓名"/>
+            <th value="年龄"/>
+            <th value="性别"/>
+            <th value="出生日期"/>
+            <th value="爱好"/>
+        </tr>
+    </thead>
+    <!--表格内容的样式和属性，repeat是默认设置样式和属性的行数-->
+    <tbody>
+        <tr height="16px" firstrow="2" firsrcol="0" repeat="5">
+            <td type="string" isnullable="false" maxlength="30"/><!--编号-->
+            <td type="string" isnullable="false" maxlength="50"/><!--姓名-->
+            <td type="numeric" isnullable="false" format="##0"/><!--年龄，format值的属性，##0整型-->
+            <td type="enum" isnullable="true" format="男,女"/><!--性别，enum枚举类型，format枚举的值-->
+            <td type="date" isnullable="true" maxlength="30"/><!--出生日期-->
+            <td type="enum" isnullable="true" format="足球,篮球,乒乓球"/><!--爱好-->
+        </tr>
+    </tbody>
+</excel>

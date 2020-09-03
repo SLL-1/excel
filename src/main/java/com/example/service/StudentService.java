@@ -8,5 +8,7 @@ public interface StudentService {
     List<student> getStudentList(SelectTemplate selectTemplate);
     List<student> getStudentList();
     int getStudentTotal (SelectTemplate selectTemplate);
+    int insertStudent(student student);
 
+    boolean insertStudentByImportId(int importId);
 }

@@ -16,6 +16,15 @@ public class student {
     private String stuhobby;
     private int total;
 
+    public student(Integer stunum, String stuname, Integer stuage, String stusex, Date stubirthday, String stuhobby) {
+        this.stunum = stunum;
+        this.stuname = stuname;
+        this.stuage = stuage;
+        this.stusex = stusex;
+        this.stubirthday = stubirthday;
+        this.stuhobby = stuhobby;
+    }
+
     public Integer getStunum() {
         return stunum;
     }

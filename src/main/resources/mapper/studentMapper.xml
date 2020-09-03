@@ -99,6 +99,15 @@
       </if>
     </trim>
   </insert>
+  <insert id="insertByImportId" parameterType="java.lang.Integer">
+    insert into student
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <include refid="Base_Column_List" />
+    </trim>
+    select col0,col1,col2,col3,col4,col5
+    from importdatadetail
+    where importid=#{importid} and failcode is null
+  </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.example.entity.student">
     update student
     <set>

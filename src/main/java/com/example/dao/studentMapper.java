@@ -19,4 +19,6 @@ public interface studentMapper {
     int updateByPrimaryKey(student record);
     List<student> selectList(SelectTemplate selectTemplate);
     int  selectListTotal(SelectTemplate selectTemplate);
+
+    void insertByImportId(int importid);
 }
