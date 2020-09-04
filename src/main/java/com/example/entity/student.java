@@ -1,8 +1,10 @@
 package com.example.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class student {
+//implements Serializable 作用redis反序列化的时候可以识别
+public class student implements Serializable {
     private Integer stunum;
 
     private String stuname;
@@ -15,6 +17,9 @@ public class student {
 
     private String stuhobby;
     private int total;
+
+    public student() {
+    }
 
     public student(Integer stunum, String stuname, Integer stuage, String stusex, Date stubirthday, String stuhobby) {
         this.stunum = stunum;
