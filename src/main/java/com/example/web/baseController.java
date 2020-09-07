@@ -29,6 +29,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
@@ -251,5 +252,23 @@ return modelMap;
             e.printStackTrace();
         }
         return returnValue;
+    }
+
+    @RequestMapping("/exception")
+    public ModelAndView getException(){
+        ModelAndView modelAndView=new ModelAndView();
+        modelAndView.setViewName("/layout");
+        //测试异常处理
+    int i=5/0;
+    return modelAndView;
+    }
+    @RequestMapping("/exception1")
+    public ModelAndView getException1(){
+        ModelAndView modelAndView=new ModelAndView();
+        modelAndView.setViewName("/layout");
+        //测试异常处理
+        String a=null;
+        System.out.println(a.toString());
+        return modelAndView;
     }
 }
