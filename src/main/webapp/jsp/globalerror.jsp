@@ -9,7 +9,7 @@
 <html>
 <head>
     <title>Title</title>
-    错误代码页面globalerror
+    测试devtools+错误代码页面globalerror
     <span >${errorInfo}</span>
 </head>
 <body>
